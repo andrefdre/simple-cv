@@ -1,351 +1,163 @@
-%-------------------------
-% Resume in Latex
-% Author : Puneet Gautam, puneet.gautam0206@gmail.com, punitrajgautam@uiit.ac.in
-% License : MIT
-%MIT License
+%%%%%%%%%%%%%%%%%
+% This is an sample CV template created using altacv.cls
+% (v1.1.4, 27 July 2018) written by LianTze Lim (liantze@gmail.com). Now compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
+% 
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+%% If you need to pass whatever options to xcolor
+\PassOptionsToPackage{dvipsnames}{xcolor}
 
-%Copyright (c) 2023 Puneet Gautam
+%% If you are using \orcid or academicons
+%% icons, make sure you have the academicons 
+%% option here, and compile with XeLaTeX
+%% or LuaLaTeX.
+% \documentclass[10pt,a4paper,academicons]{altacv}
 
-%Permission is hereby granted, free of charge, to any person obtaining a copy
-%of this software and associated documentation files (the "Software"), to deal
-%in the Software without restriction, including without limitation the rights
-%to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%copies of the Software, and to permit persons to whom the Software is
-%furnished to do so, subject to the following conditions:
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
 
-%The above copyright notice and this permission notice shall be included in all
-%copies or substantial portions of the Software.
+\documentclass[10pt,a4paper]{altacv}
+%% AltaCV uses the fontawesome and academicon fonts
+%% and packages. 
+%% See texdoc.net/pkg/fontawecome and http://texdoc.net/pkg/academicons for full list of symbols.
+%% 
+%% Compile with LuaLaTeX for best results. If you
+%% want to use XeLaTeX, you may need to install
+%% Academicons.ttf in your operating system's font 
+%% folder.
 
-%THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-%SOFTWARE.
-%------------------------
 
-%---- Required Packages and Functions ----
+% Change the page layout if you need to
+\geometry{left=1cm,right=9cm,marginparwidth=6.8cm,marginparsep=1.2cm,top=1.25cm,bottom=1.25cm,footskip=2\baselineskip}
 
-\documentclass[a4paper,11pt]{article}
-\usepackage{latexsym}
-\usepackage{xcolor}
-\usepackage{float}
-\usepackage{ragged2e}
-\usepackage[empty]{fullpage}
-\usepackage{wrapfig}
-\usepackage{lipsum}
-\usepackage{tabularx}
-\usepackage{titlesec}
-\usepackage{geometry}
-\usepackage{marvosym}
-\usepackage{verbatim}
-\usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
-\usepackage{multicol}
-\usepackage{graphicx}
-\usepackage{cfr-lm}
+% Change the font if you want to.
+
+% If using pdflatex:
 \usepackage[T1]{fontenc}
-\setlength{\multicolsep}{0pt} 
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-\geometry{left=0.6cm, top=0.5cm, right=0.6cm, bottom=0.5cm}
-% Adjust margins
-%\addtolength{\oddsidemargin}{-0.5in}
-%\addtolength{\evensidemargin}{-0.5in}
-%\addtolength{\textwidth}{1in}
-\usepackage[most]{tcolorbox}
-\tcbset{
-	frame code={}
-	center title,
-	left=0pt,
-	right=0pt,
-	top=0pt,
-	bottom=0pt,
-	colback=gray!20,
-	colframe=white,
-	width=\dimexpr\textwidth\relax,
-	enlarge left by=-2mm,
-	boxsep=4pt,
-	arc=0pt,outer arc=0pt,
-}
+\usepackage[utf8]{inputenc}
+\usepackage[default]{lato}
 
-\urlstyle{same}
+% If using xelatex or lualatex:
+% \setmainfont{Lato}
 
-\raggedright
-\setlength{\tabcolsep}{0in}
+% Change the colours if you want to
+\definecolor{Navy}{HTML}{000080}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\colorlet{heading}{Navy}
+\colorlet{accent}{Navy}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
 
-% Sections formatting
-\titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+%% sample.bib contains your publications
+\addbibresource{sample.bib}
 
-%-------------------------
-% Custom commands
-\newcommand{\resumeItem}[2]{
-  \item{
-    \textbf{#1}{:\hspace{0.5mm}#2 \vspace{-0.5mm}}
-  }
-}
-
-\newcommand{\resumePOR}[3]{
-\vspace{0.5mm}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1},\hspace{0.3mm}#2 & \textit{\small{#3}} 
-    \end{tabular*}
-    \vspace{-2mm}
-}
-
-\newcommand{\resumeSubheading}[4]{
-\vspace{0.5mm}\item
-    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1} & \textit{\footnotesize{#4}} \\
-        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
-    \end{tabular*}
-    \vspace{-2.4mm}
-}
-
-\newcommand{\resumeProject}[4]{
-\vspace{0.5mm}\item
-    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1} & \textit{\footnotesize{#3}} \\
-        \footnotesize{\textit{#2}} & \footnotesize{#4}
-    \end{tabular*}
-    \vspace{-2.4mm}
-}
-
-\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
-
-% \renewcommand{\labelitemii}{$\circ$}
-\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
-
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=0mm]}
-\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
-\newcommand{\resumeItemListStart}{\begin{justify}\begin{itemize}[leftmargin=3ex, rightmargin=2ex, noitemsep,labelsep=1.2mm,itemsep=0mm]\small}
-
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
-\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\end{justify}\vspace{-2mm}}
-\newcommand{\cvsection}[1]{%
-\vspace{2mm}
-\begin{tcolorbox}
-    \textbf{\large #1}
-\end{tcolorbox}
-    \vspace{-4mm}
-}
-
-\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
-\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
-\newcolumntype{C}{>{\centering\arraybackslash}X}%
-%---- End of Packages and Functions ------
-
-%-------------------------------------------
-%%%%%%  CV STARTS HERE  %%%%%%%%%%%
-%%%%%% DEFINE ELEMENTS HERE %%%%%%%
-\newcommand{\name}{First Name Last Name} % Your Name
-\newcommand{\course}{Bachelor of Technology} % Your Course
-\newcommand{\roll}{Your Roll No} % Your Roll No.
-\newcommand{\phone}{Your Phone Number} % Your Phone Number
-\newcommand{\email}{your email} %Email 
-\newcommand{\github}{your GitHub link} %Github
-%\newcommand{\website}{https://www.yourwebsite.com} %Website
-\newcommand{\linkedin}{your linkedIn link} %linkedin
-
-
-
+\usepackage[colorlinks]{hyperref}
 
 \begin{document}
-\fontfamily{cmr}\selectfont
-%----------HEADING-----------------
-\parbox{2.35cm}{%
 
-\includegraphics[width=2cm,clip]{logo/logo.png}
-
-}\parbox{\dimexpr\linewidth-2.8cm\relax}{
-\begin{tabularx}{\linewidth}{L r}
-  \textbf{\LARGE \name} & +91-\phone\\
-  
-  \course &  \href{mailto:\email}{\email}\\
-   {in Computer Science Engineering} &  \href{https://github.com/\github}{GitHub} \\ %$|$ \href{\website}{Website}\\
-  {University Institute of Technology, HPU, Shimla} & \href{https://www.linkedin.com/in/\linkedin/}{LinkedIn}
-\end{tabularx}
+\name{André Cardoso}
+\tagline{Software Engineer}
+% \photo{2.8cm}{Globe_High}
+\personalinfo{%
+  % Not all of these are required!
+  % You can add your own with \printinfo{symbol}{detail}
+  \email{andrefdre@gmail.com}
+  \phone{(+351) 934391342}
+%  \mailaddress{Address, Street, 00000 County}
+ \location{Aveiro, Portugal}
+%  \homepage{abhinavj004.github.io}
+%  \twitter{@marissamayer}
+  \linkedin{linkedin.com/in/andr\%C3\%A9-cardoso-8bb264223/}
+  \newline
+   \github{github.com/andrefdre} % I'm just making this up though.
+  %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
+%   \orcid{orcid.org/0000-0000-0000-0000}
 }
 
-\vspace{-2mm}
-%-------------SUMMARY-----------------
-\section{\textbf{Summary}}
-This CV is automatically generated and deployed using the \href{https://github.com/kryptoniteX/autocvmkr}{autoCVmkr} template along with GitHub Actions such that a new version of the CV is compiled, published and ready for use when the cv.tex file is updated.
-%-----------EDUCATION-----------------
-\section{\textbf{Education}}
-\setlength{\tabcolsep}{5pt} % Default value: 6pt
-% \renewcommand{\arraystretch}{1.1} % Default value: 1
-\small{\begin{tabularx}
-{\dimexpr\textwidth-2mm\relax}{|c|C|c|c|c|}
-  \hline
-  \textbf{Degree } & \textbf{Institute} & \textbf{Board / University} & \textbf{CGPA/Percentage} & \textbf{Year}\\
-  \hline
-  B.Tech CSE & University Institute of Technology, Shimla & HPU, Shimla & 8.61 (Till 5th Sem) & 2019-2023\\
- 
-  \hline
-  Senior Secondary & School Name & CBSE & 88.88\% & 2018 \\
-  \hline
-  Matriculation & School Name & HPBOSE & 85.57\% & 2016 \\
-  \hline
-\end{tabularx}}
-\vspace{-1mm}
+%% Make the header extend all the way to the right, if you want. 
+\begin{fullwidth}
+\makecvheader
+\end{fullwidth}
 
-%-----------EXPERIENCE-----------------
-\section{\textbf{Experience}}
-  \resumeSubHeadingListStart
-
-    \resumeSubheading
-      {Company Name}{Location}
-      {Position}{June 2021 - July 2021}
-      \resumeItemListStart
-        \item {About work}
-        \item {About Work}
-      \resumeItemListEnd
-    
-%    \vspace{-1mm}
-%    \resumeSubheading
-%      {Company Name}{Location}
-%      {Position}{June 2021 - July 2021}
-%      \resumeItemListStart
-%    \item {About work}
-%    \item {About Work}
-%    \resumeItemListEnd
-    
-    
-    % \item {More work done } .....
-
-    
-  
-      
-  \resumeSubHeadingListEnd
-\vspace{-6.5mm}
-%-----------PROJECTS-----------------
-\section{\textbf{Projects}}
-\resumeSubHeadingListStart
-    
-    \resumeProject
-      {Project Name} %Project Name
-      {Course or faculty} %Project Name, Location Name
-      {Mar 2021 - Apr 2021} %Event Dates
-      {\href{Github Link}{\textbf{Github}}} %Website
-      \resumeItemListStart
-        \item {About it}
-        \item {About it}
-      \resumeItemListEnd
-    
-     \vspace{-1mm}
-     
-    \resumeProject
-      {Project Name} %Project Name
-      {Course or faculty} %Project Name, Location Name
-      {Mar 2021 - Apr 2021} %Event Dates
-      {\href{Github Link}{\textbf{Github}}} %Website
-      \resumeItemListStart
-        \item {About it}
-        \item {About it}
-      \resumeItemListEnd
-    
-     
-    
-   
-      
-\resumeSubHeadingListEnd
-\vspace{-7.5mm}
-
-\section{\textbf{Technical Skills}}
- \resumeHeadingSkillStart
-  \resumeSubItem{Programming Languages} % Category
-    { C/C++, Python}
-    
-    %\vspace{-0.5mm}
-    
- \resumeSubItem{Tools and Frameworks} % Category
-    {Jupyter, Visual Studio \& Figma} % Skills
-    
-    %\vspace{-0.5mm}
-    
- \resumeSubItem{Operating Systems} % Category
-    {Windows, Linux \& Android} % Skills
-    
-    %\vspace{-0.5mm}
-    
- 
- \resumeHeadingSkillEnd
-
-\vspace{-1.5mm}
-
-\section{\textbf{Key courses taken}}
-\resumeHeadingSkillStart
- \resumeSubItem{CSE \& Maths} % Category
-    {Introduction to C, Fundamentals of Computers, Object Oriented Paradigm in C++, Data Structures and Algorithms, Computer Organization \& Architecture, Python Programming, Operating System, Database Management System, Statistical Methods, Discrete Mathematics, Numerical Methods, Computer Networks \& Security, Software Engineering, Compiler Design, Computer Graphics \& Multimedia}
-    %\vspace{-0.5mm}
- \resumeSubItem{Others}
- {Basic Electronics \& Electrical Engineering, Engineering Drawing, Digital Electronics, Principle of Engineering Economics and Management, Microprocessor: Theory \& Applications}
-%  \resumeSubItem{Electrical and Electronics} % Category
-%     {Advanced Control Systems, Digital Systems, Microprocessors} % Skills
-\resumeHeadingSkillEnd
-
-\vspace{-1mm}
-%---------------CERTIFICATIONS-------------------
-\section{\textbf{Certifications}}
-    \resumeItemListStart
-        \item {\href{paste link here}{\textbf{ Certificate Name}}}
-        {Certifying Institution Name} %Certifying Authority
-        \item {\href{paste link here}{\textbf{ Certificate Name}}}
-        {Certifying Institution Name} %Certifying Authority
-        \item {\href{paste link here}{\textbf{ Certificate Name}}}
-        {Certifying Institution Name} %Certifying Authority
-    \resumeItemListEnd
-\vspace{-4mm}
-
-%-----------TRAINING-----------------
-\section{\textbf{Vocational Training}}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Institution Name}{Location}
-      {Course Name}{Start Time-EndTime}
-      \resumeItemListStart
-        \item {About course, blah blah}
-        \item {About course, blah blah}
-      \resumeItemListEnd 
-    \resumeSubHeadingListEnd
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+% \AtBeginEnvironment{itemize}{\small}
 
 
-\section{\textbf{Positions of Responsibility}}
-\vspace{-0.4mm}
-\resumeSubHeadingListStart
-  \resumePOR{Secretary} % Position
-    {XYZ Club, UIT Shimla} %Club,Event
-    {Apr. 2018 - Apr. 2019} %Tenure Period
-  \resumePOR{Secretary} % Position
-    {XYZ Club, UIT Shimla} %Club,Event
-    {Apr. 2018 - Apr. 2019} %Tenure Period
-\resumeSubHeadingListEnd
-\vspace{-4mm}
+%% Provide the file name containing the sidebar contents as an optional parameter to \cvsection.
+%% You can always just use \marginpar{...} if you do
+%% not need to align the top of the contents to any
+%% \cvsection title in the "main" bar.
+\cvsection[page1sidebar]{Experience}
+
+\cvevent{Research Fellow / Dissertation}{Laboratory of Automation and Robotics | University of Aveiro}{February 2023 - Present}{}
+\begin{itemize}
+\item Implementation of a sophisticated \textbf{sunlight variation algorithm} in a data-driven simulator.  
+\item  Integration of a cutting-edge \textbf{object variation algorithm} into the data-driven simulator.
+\item By incorporating sophisticated techniques for \textbf{scene augmentation}, we were able to significantly enhance the ability of our models to generalize to previously unseen data.
+\end{itemize}
+\medskip
+\divider
+\cvevent{Machine Learning / Eletrical Engineer}{Automec - University of Aveiro}{September 2021 - Present}{}
+\begin{itemize}
+\item implemention of multiple \textbf{neural networks} utilizing the \textbf{PyTorch} framework to control a car in the field of autonomous vehicle technology.
+\item Development and fabrication of a high-quality \textbf{PCB} equipped with comprehensive power distribution and low-level control mechanisms.
+\end{itemize}
 
 
-\section{\textbf{Miscellaneous}}
-\vspace{-0.1mm}
-\resumeSubHeadingListStart
-\resumePOR{Achievement 1} % Award
-    { About it} % Event
-    {2017} %Event Year
-\vspace{-0.1mm}
-\resumePOR{Achievement 2} % Award
-    {About it} % Event
-    {2021} %Event Year
-\vspace{-0.1mm}
-\resumeSubHeadingListEnd
-%-------------------------------------------
-\vfill
-\center{\footnotesize Last updated: \today}
+
+\cvsection{Projects}
+
+\cvevent{Dora the Mug Finder}{Pytorch / ROS / Open3D}{December 2022 -- February 2023}{}
+\begin{itemize}
+\item The utilization of advanced \textbf{point cloud processing} techniques to extract objects from complex three-dimensional scenes.
+\item Employing a state-of-the-art deep \textbf{neural network} for object classification in the scene camera.
+\item Utilizing \textbf{ROS} as the underlying framework for project development facilitated seamless collaboration and interoperability.
+\end{itemize}
+\medskip
+\divider
+
+\cvevent{Full-stack Website development}{React / NodeJS / MongoDB}{April 2022 -- July 2022}{}
+\begin{itemize}
+    \item The development of a \textbf{full-stack web application}  for a shopping website showcased our expertise in crafting robust and scalable software solutions.
+\end{itemize}
+\divider
+\medskip
+
+\cvevent{GPS guided RC car}{3D Printing / 3D Modelling / Arduino}{July 2019 -- Present}{}
+\begin{itemize}
+    \item Development of the \textbf{mechanical project} as well as its fabrication using \textbf{3D printing} technology.
+    \item Development of the Software and Electrical project.
+\end{itemize}
+\divider
+%\medskip
+
+% Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+% \wheelchart{outer radius}{inner radius}{
+% comma-separated list of value/text width/color/detail}
+
+
+\clearpage
+
+
+
+
+%% If the NEXT page doesn't start with a \cvsection but you'd
+%% still like to add a sidebar, then use this command on THIS
+%% page to add it. The optional argument lets you pull up the 
+%% sidebar a bit so that it looks aligned with the top of the
+%% main column.
+% \addnextpagesidebar[-1ex]{page3sidebar}
 
 \end{document}
