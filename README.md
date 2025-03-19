@@ -1,28 +1,33 @@
-# autoCVmkr
-With just a few lines of LaTeX code, you can quickly create a visually appealing and well-formatted CV that highlights your work experience, education, skills, and other relevant information.
-It has used GitHub action that complies the `*.tex` file and publishes a new PDF version when new changes are pushed to the repo
+# AltaCV, yet another LaTeX CV/Résumé class
 
-## Overleaf
-This template is also available on OverLeaf. You can follow this link to use this CV template on Overleaf - https://www.overleaf.com/latex/templates/autocvmkr-cv-template/qqgywjpfdjwj
+v1.1.4 (27 July 2018), by LianTze Lim (liantze@gmail.com)
+
+(Thanks to [Nur](https://github.com/nurh) for the name.)
+
+It all started with this:
+
+[<img src="tweet-that-started-this.png" width="500px">]
+(https://twitter.com/Leonduck/status/764281546408923136)
+
+Leonardo was talking about a [résumé of Marissa Mayer that Business Insider put together](http://www.businessinsider.my/a-sample-resume-for-marissa-mayer-2016-7/) using [enhancv.com](https://enhancv.com).
+I _knew_ I had to do something about it. And so AltaCV was born.
+
+## Samples
+
+This is how the re-created résumé looks like ([view/open on Overleaf](https://www.overleaf.com/read/gtqfpbwncfvp)):
+
+<img src="mmayer.png" alt="Marissa Mayer's résumé, re-created with AltaCV" width="600px">
+
+Though if you're creating your own CV/résumé, you'd probably prefer using the basic template ([view/open on Overleaf](https://www.overleaf.com/read/trgqjpwnmtgv)):
+
+<img src="sample.png" alt="sample barebones AltaCV template" width="600px">
 
 
-## Quickstart
-- Fork this repo (you can use the `Use this template` button)
-- Modify the `cv.tex` file and push changes to your repo
-- The complied PDF will be available under the `build` branch
+## Requirements and Compilation
 
-Optionally, while forking this repo, you can get a direct link to the generated PDF which you can use on your website, LinkedIn etc. that will always point to the latest version of your CV. For this, after editing your copy of `cv.tex` and pushing changes to your repo, under Settings -> Pages set your Github Pages source to the `build` directory
-
-![image](https://user-images.githubusercontent.com/89017901/211071544-d6c36ec0-f3c4-4908-be9b-6c60e700ebab.png)
-
-
-Now, once your site is published, your CV will be accessible at: https://andrefdre.github.io/simple-cv/cv.pdf
-
-
-## Issues
-Please start a new discussion or issue if you encounter problems
-
-PS: If you liked the template, do star :star: it! Thanks!
-
-## Disclaimer
-Please note that this project is for personal use only and should not be used for any commercial purposes. 
+* pdflatex + biber + pdflatex
+* AltaCV uses [`fontawesome`](http://www.ctan.org/pkg/fontawesome) and [`academicons`](http://www.ctan.org/pkg/academicons); they're included in both TeX Live 2016 and MikTeX 2.9.
+* Loading `academicons` is optional: enable it by adding the `academicons` option to `\documentclass`.
+* Can now be compiled with pdflatex, XeLaTeX and LuaLaTeX!
+* However if you're using `academicons`, you _must_ use either XeLaTeX or LuaLaTeX. If the doc then compiles but the icons don't show up in the output PDF, try compiling with LuaLaTeX instead.
+* The samples here use the [Lato](http://www.latofonts.com/lato-free-fonts/) font.
